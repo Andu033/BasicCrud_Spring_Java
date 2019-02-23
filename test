@@ -1,0 +1,25 @@
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+	
+	
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		String alf = "abcdefghijklmnopqrstuvwxyz";
+		StringBuilder sb = new StringBuilder(alf);
+		
+		int n = scanner.nextInt();
+		scanner.nextLine();
+		String[] mat = new String[n + 1];
+		for (int i = 0; i < n; i++) {
+			mat[i] = scanner.nextLine();
+		}
+		
+		
+		
+		scanner.close();
+	}
+}
+
