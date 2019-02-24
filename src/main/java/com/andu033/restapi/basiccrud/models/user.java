@@ -6,6 +6,21 @@ public class user {
 	
 	private int id;
 	
+	private String username;
+	
+	private String password;
+	
+	private String email;
+	
+	public user() {
+	}
+	
+	public user(String username, String password, String email) {
+		this.username = username;
+		this.password = password;
+		this.email = email;
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -13,17 +28,6 @@ public class user {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	private String username;
-	private String password;
-	private String email;
-	public  user(){}
-	public user(String username, String password, String email) {
-		this.username = username;
-		this.password = password;
-		this.email = email;
-	}
-	
 	
 	public String getUsername() {
 		return username;

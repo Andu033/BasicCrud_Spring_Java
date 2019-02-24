@@ -22,9 +22,9 @@ public class HibernateUserDAO implements userDAO {
 		Transaction tx = sessionFactory.getCurrentSession().beginTransaction();
 		String hql = "from user";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		List<user> l = query.list();
+		List<user> users = query.list();
 		tx.commit();
-		return l;
+		return users;
 		
 	}
 	
