@@ -23,7 +23,7 @@ class UserAuthController {
 
 	@GetMapping("/employees")
 	String all() {
-		SessionFactory factory = new Configuration().configure().buildSessionFactory();
+		//SessionFactory factory = new Configuration().configure().buildSessionFactory();
 	
 		return "da";
 	}
