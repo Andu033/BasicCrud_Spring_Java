@@ -8,17 +8,15 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
-@SpringBootApplication(exclude={DataSourceAutoConfiguration.class})
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class BasiccrudApplication {
-
+	
 	public static void main(String[] args) {
 		SpringApplication.run(BasiccrudApplication.class, args);
-		user user1 = new user("andu","password","dcuan17@yahoo.com");
+		user user1 = new user("andu", "password", "dcuan17@yahoo.com");
 		HibernateUtil.getSessionFactory().openSession();
-		Context.getUserDAO().setSessionFactory(HibernateUtil.getSessionFactory());
+		Context.setSessionFactory(HibernateUtil.getSessionFactory());
 		//dao.deleteUser(user1);
-		Context.getUserDAO().getUser("andu").stream()
-				.forEach(p->System.out.println(p.getId()));
 	}
-
+	
 }

@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class HibernateUserDAO implements userDAO {
 	
@@ -17,6 +18,7 @@ public class HibernateUserDAO implements userDAO {
 		this.sessionFactory = sessionFactory;
 	}
 	
+	//resolve this hack
 	@Override
 	public List<user> getUser(String username) {
 		Transaction tx = sessionFactory.getCurrentSession().beginTransaction();
@@ -24,7 +26,12 @@ public class HibernateUserDAO implements userDAO {
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		List<user> users = query.list();
 		tx.commit();
-		return users;
+		//System.out.println(users.size());
+		users.stream()
+				.forEach(p->System.out.println(p.getUsername()));
+		return users.stream()
+				.filter(user -> user.getUsername().equals(username))
+				.collect(Collectors.toList());
 		
 	}
 	
