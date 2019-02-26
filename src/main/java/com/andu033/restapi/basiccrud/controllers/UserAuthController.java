@@ -15,15 +15,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/user")
 class UserAuthController {
 	
 	
 	// Aggregate root
 	
-	@GetMapping("/users")
+	@GetMapping("/util")
 	List<user> all() {
 		//SessionFactory factory = new Configuration().configure().buildSessionFactory();
 		//System.out.println(Context.getUserDAO().getUser("andu").size());
@@ -37,7 +39,7 @@ class UserAuthController {
 	*/
 	// Single item
 	
-	@PostMapping("/user")
+	@PostMapping("/add")
 	Boolean add(@RequestBody user user1) {
 		System.out.println(user1.getUsername());
 		Context.getUserDAO().getUser(user1.getUsername()).stream().forEach(p->System.out.println(p.getUsername()));
@@ -48,8 +50,8 @@ class UserAuthController {
 		return false;
 		
 	}
-
-	@PutMapping("/user/{name}")
+	
+	@PutMapping("/{name}")
 	String replaceUser(@RequestBody user user1, @PathVariable String name) {
 		List<user> users = Context.getUserDAO().getUser(user1.getUsername());
 		if (!users.isEmpty())
@@ -63,8 +65,8 @@ class UserAuthController {
 		}
 		return "FAILED";
 	}
-
-	@DeleteMapping("/user/delete")
+	
+	@DeleteMapping("/delete")
 	void deleteEmployee(@RequestBody user user1) {
 		List<user> users = Context.getUserDAO().getUser(user1.getUsername());
 		if (!Context.getUserDAO().getUser(user1.getUsername()).isEmpty())
